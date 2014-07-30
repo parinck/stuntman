@@ -8,12 +8,19 @@
 		} catch ( e ) {
 			return undefined;
 		}
-	}
+	};
+
+	Stuntman.prototype.who = function ( amI ) {
+		return Object.prototype.toString.call( amI ).replace( /^\[object (.+)\]$/, "$1" ).toLowerCase();
+	};
+
 	window.stuntman = new Stuntman();
 } )();
 
 obj = {
 	name: "parin"
 };
-console.log( window.stuntman.perform( obj, "name" ) );
-console.log( window.stuntman.perform( obj, "name.lname" ) );
+console.log( stuntman.perform( obj, "name" ) );
+console.log( stuntman.perform( obj, "name.lname" ) );
+amIanObject = {};
+console.log( stuntman.who( amIanObject ) );
